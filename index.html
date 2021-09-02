@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="assets/favicon.ico">
+  <script src="script.js" defer></script>
+  <title>custom-video-player</title>
+</head>
+<body>
+  <div class="container">
+    <div class="flex-wrapper ">
+      <div class="video-container">
+        <video id="video" class="player" src="assets/video/video1.mp4" preload="metadata"></video>
+        <div class="controls">
+          <button class="prev-btn"></button>
+          <button class="play-btn"></button>
+          <button class="next-btn"></button>
+          <div class="times"><span class="cur-time">00:00</span> / <span class="dur-time">00:00</span></div>
+          <input type="range" value="0" min="0" max="100" step="1" class="progress-bar">
+          <button class="mute-btn"></button>
+          <input type="range" value="100" min="0" max="100" class="volume-bar">
+          <button class="fs-btn"></button>
+        </div>
+        <button class="video-big-btn"></button>
+      </div>
+    </div>
+    <div class="manual">
+      <div class="manual__block">
+        <p class="manual__item"><span class="manual__key">Space</span> : <span class="manual__description">play / pause</span></p>
+        <p class="manual__item"><span class="manual__key">F</span> : <span class="manual__description">toggle fullscreen</span></p>
+        <p class="manual__item"><span class="manual__key">M</span> : <span class="manual__description">mute</span></p>
+        <p class="manual__item"><span class="manual__key">&gt;</span> : <span class="manual__description">speed +10%</span></p>
+        <p class="manual__item"><span class="manual__key">&lt;</span> : <span class="manual__description">speed -10%</span></p>
+      </div>
+      <div class="manual__block">
+        <p class="manual__item"><span class="manual__key">Arrow-right</span> : <span class="manual__description">rewind +5 sec</span></p>
+        <p class="manual__item"><span class="manual__key">Arrow-left</span> : <span class="manual__description">rewind -5 sec</span></p>
+        <p class="manual__item"><span class="manual__key">Arrow-up</span> : <span class="manual__description">volume +10%</span></p>
+        <p class="manual__item"><span class="manual__key">Arrow-down</span> : <span class="manual__description">volume -10%</span></p>
+        <p class="manual__item"><span class="manual__key">Left Ctrl + Arrow-right</span> : <span class="manual__description">next video</span></p>
+        <p class="manual__item"><span class="manual__key">Left Ctrl + Arrow-left</span> : <span class="manual__description">previous video</span></p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
