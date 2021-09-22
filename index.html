@@ -10,22 +10,23 @@
 </head>
 <body>
   <div class="container">
-    <div class="flex-wrapper ">
+    <div class="video-flex-wrapper">
       <div class="video-container">
         <video id="video" class="player" src="assets/video/video1.mp4" preload="metadata"></video>
         <div class="controls">
-          <button class="prev-btn"></button>
-          <button class="play-btn"></button>
-          <button class="next-btn"></button>
-          <div class="times"><span class="cur-time">00:00</span> / <span class="dur-time">00:00</span></div>
-          <input type="range" value="0" min="0" max="100" step="1" class="progress-bar">
-          <button class="mute-btn"></button>
-          <input type="range" value="100" min="0" max="100" class="volume-bar">
-          <button class="fs-btn"></button>
+          <button class="prev-btn controls-elem controls-btn"></button>
+          <button class="play-btn controls-elem controls-btn"></button>
+          <button class="next-btn controls-elem controls-btn"></button>
+          <div class="times controls-elem"><span class="cur-time">00:00</span> / <span class="dur-time">00:00</span></div>
+          <input type="range" value="0" min="0" max="100" step="1" class="progress-bar controls-elem controls-input">
+          <button class="mute-btn controls-elem controls-btn"></button>
+          <input type="range" value="100" min="0" max="100" class="volume-bar controls-elem controls-input">
+          <button class="fs-btn controls-elem controls-btn"></button>
         </div>
         <button class="video-big-btn"></button>
       </div>
     </div>
+
     <div class="manual">
       <div class="manual__block">
         <p class="manual__item"><span class="manual__key">Space</span> : <span class="manual__description">play / pause</span></p>

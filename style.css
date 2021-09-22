@@ -14,7 +14,7 @@ html {
 
 @media screen and (max-width: 767px) {
   html {
-      font-size: 50%;
+      font-size: 56.25%;
   }
 }
 
@@ -52,62 +52,29 @@ img {
   max-width: 1440px;
   width: calc(100% - 40px);
   margin: 0 auto;
+  padding-top: 150px;
 }
 
-.flex-wrapper {
+/*videoplayer*/
+.video-flex-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/*videoplayer*/
 .video-container {
   position: relative;
-  margin: 100px 20px 50px 20px;
   background-color: #070707;
+  width: auto;
 }
 
 video {
-  width: 864px;
-  height: 486px;
-}
-
-@media screen and (max-width: 950px) {
-  video {
-    width: 768px;
-    height: 432px;
-  }
-}
-
-@media screen and (max-width: 830px) {
-  video {
-    width: 672px;
-    height: 378px;
-  }
-}
-
-@media screen and (max-width: 700px) {
-  video {
-    width: 576px;
-    height: 324px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  video {
-    width: 480px;
-    height: 270px;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  video {
-    width: 346px;
-    height: 195px;
-  }
-  .controls {
-    width: 346px;
-  }
+  display: block;
+  width: 850px;
+  height: 480px;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
 }
 
 .video-big-btn {
@@ -118,8 +85,41 @@ video {
   height: 150px;
   margin: -75px 0 0 -75px;
   background-color: transparent;
-  background-image: url(assets/img/center-btn.svg);
+  background-image: url(assets/controls/big-btn.svg);
   background-size: contain;
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 1024px) {
+  .video-big-btn {
+    width: 125px;
+    height: 125px;
+    margin: -70px 0 0 -60px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .video-big-btn {
+    width: 100px;
+    height: 100px;
+    margin: -60px 0 0 -50px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .video-big-btn {
+    width: 80px;
+    height: 80px;
+    margin: -55px 0 0 -40px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .video-big-btn {
+    width: 60px;
+    height: 60px;
+    margin: -45px 0 0 -30px;
+  }
 }
 
 .video-big-btn:hover {
@@ -130,10 +130,44 @@ video {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: -9px;
-  padding: 20px 20px;
-  height: 70px;
-  background-color: #000;
+  background-color: rgb(0 0 0 / 72%);
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+@media screen and (max-width: 1024px) {
+  .controls {
+    padding: 0 24px; 
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .controls {
+    padding: 0 18px; 
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .controls {
+    padding: 0 8px; 
+  }
+}
+
+.controls-elem {
+  margin: 10px 10px;
+}
+
+@media screen and (max-width: 1024px) {
+  .controls-elem {
+    margin: 15px 15px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .controls-elem {
+    margin: 12px 12px;
+  }
 }
 
 .controls button {
@@ -148,6 +182,28 @@ video {
   filter: invert(43%) sepia(0%) saturate(0%) hue-rotate(8deg) brightness(95%) contrast(86%);
 }
 
+.controls-btn {
+  padding: 17px;
+}
+
+@media screen and (max-width: 1024px) {
+  .controls-btn {
+    padding: 15px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .controls-btn {
+    padding: 14px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .controls-btn {
+    padding: 13px;
+  }
+}
+
 .prev-btn {
   width: 27px;
   height: 30px;
@@ -157,53 +213,119 @@ video {
 .next-btn {
   width: 27px;
   height: 30px;
-  margin-left: 10px;
   background-image: url(assets/controls/next.svg);
 }
 
+@media screen and (max-width: 1024px) {
+  .prev-btn, .next-btn {
+    width: 16px;
+    height: 18px;
+  }
+}
+
 .play-btn {
-  width: 27px;
+  width: 23px;
   height: 30px;
-  margin-left: 10px;
+  max-width: 100%;
+  max-height: 100%;
   background-image: url(assets/controls/play.svg);
 }
 
+@media screen and (max-width: 1024px) {
+  .play-btn {
+    width: 14px;
+    height: 18px;
+  }
+}
+
 .times {
-  margin-left: 10px;
+  max-width: 107px;
+  width: 100%;
   color: #fff;
   letter-spacing: 1px;
-  width: 107px;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+  .times {
+    max-width: 88px;
+    letter-spacing: normal;
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .times {
+    max-width: 82px;
+    font-size: 14px;
+  }
 }
 
 .cur-time, .dur-time {
   display: inline-block;
-  width: 45px;
 }
 
 .mute-btn {
-  width: 55px;
+  width: 38px;
   height: 30px;
-  margin-left: 10px;
   background-image: url(assets/controls/mute.svg);
 }
 
+@media screen and (max-width: 1024px) {
+  .mute-btn {
+    width: 27px;
+    height: 21px; 
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .mute-btn {
+    width: 27px;
+    height: 21px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .mute-btn {
+    width: 18px;
+    height: 14px; 
+  }
+}
+
 .fs-btn {
-  width: 37px;
-  height: 36px;
-  margin-left: 10px;
+  width: 35px;
+  height: 35px;
   background-image: url(assets/controls/fullscreen.svg);
 }
 
+@media screen and (max-width: 1024px) {
+  .fs-btn {
+    width: 26px;
+    height: 26px; 
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .fs-btn {
+    width: 18px;
+    height: 18px; 
+  }
+}
+
 .progress-bar {
-  max-width: 380px;
+  max-width: 929px;
   width: 100%;
-  min-width: 150px;
   height: 8px;
-  margin-left: 10px;
-  background: linear-gradient(to right, #24809E 0%, #24809E 0%, #C4C4C4 0%, #C4C4C4 100%);
+  background: linear-gradient(to right, #710707 0%, #710707 0%, #C4C4C4 0%, #C4C4C4 100%);
   outline: none;
   transition: all 450ms ease-in;
   -webkit-appearance: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .progress-bar{
+    height: 5px;
+    }
 }
 
 .progress-bar::-webkit-slider-thumb {
@@ -215,77 +337,34 @@ video {
   cursor: pointer;
 }
 
+@media screen and (max-width: 1024px) {
+  .progress-bar::-webkit-slider-thumb {
+    width: 13px;
+    height: 13px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .progress-bar::-webkit-slider-thumb {
+    width: 10px;
+    height: 10px;
+  }
+}
+
 .volume-bar {
   max-width: 80px;
   width: 100%;
   height: 8px;
-  margin-left: 10px;
-  background: linear-gradient(to right, #24809E 0%, #24809E 100%, #C4C4C4 100%, #C4C4C4 100%);
+  background: linear-gradient(to right, #710707 0%, #710707 100%, #C4C4C4 100%, #C4C4C4 100%);
   outline: none;
   transition: all 450ms ease-in;
   -webkit-appearance: none;
 }
 
-@media screen and (max-width: 600px) {
-  .controls {
-    padding: 10px 10px;
-  }
-  .prev-btn {
-    width: 17px;
-    height: 20px;
-  } 
-  .next-btn {
-    width: 17px;
-    height: 20px;
-    margin-left: 10px;
-  }
-  .play-btn {
-    width: 16px;
-    height: 18px;
-    margin-left: 10px;
-  }  
-  .times {
-    margin-left: 10px;
-    width: 55px;
-  }  
-  .cur-time, .dur-time {
-    width: 45px;
-  } 
-  .mute-btn {
-    width: 30px;
-    height: 22px;
-    margin-left: 10px;
-  } 
-  .fs-btn {
-    width: 27px;
-    height: 26px;
-    margin-left: 10px;
-  }  
-  .progress-bar {
-    max-width: 140px;
-    width: 100%;
-    min-width: 120px;
-    height: 8px;
-    margin-left: 10px;
-  }  
-  .progress-bar::-webkit-slider-thumb {
-    width: 15px;
-    height: 15px;
-  } 
+@media screen and (max-width: 1024px) {
   .volume-bar {
-    max-width: 80px;
-    width: 100%;
-    height: 8px;
-    margin-left: 10px;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .progress-bar {
-    max-width: 100px;
-    width: 100%;
-    min-width: 80px;
-  }
+    height: 5px;
+    }
 }
 
 .volume-bar::-webkit-slider-thumb {
@@ -298,9 +377,11 @@ video {
 }
 
 
+
 .manual {
   display: flex;
   justify-content: center;
+  padding-top: 50px;
   color: #c3c3c3;
   font-size: 1.6rem;
 }
@@ -319,36 +400,6 @@ video {
   color: #f3f3f3;
   padding: 3px 4px;
   border-radius: 4px;
-}
-
-/*fs*/
-.video-container-fs {
-  position: relative;
-  margin: 0;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.video-fs {
-  width: 100%;
-  height: 100%;
-}
-
-.controls-fs {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: -7px;
-  padding: 20px 20px;
-  height: 70px;
-  background-color: #000;
-  position: sticky;
-  bottom: 0;
-  max-width: 960px;
-  width: 100%;
 }
 
 .dn {

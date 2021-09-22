@@ -1,4 +1,4 @@
-const flexWrapper = document.querySelector('.flex-wrapper');
+const videoWrapper = document.querySelector('.video-flex-wrapper');
 const videoContainer = document.querySelector('.video-container');
 const controls = document.querySelector('.controls');
 const player = document.querySelector('.player');
@@ -38,13 +38,13 @@ player.addEventListener('ended', () => {
 
 progressBar.addEventListener('input', function() {
   const value = this.value;
-  this.style.background = `linear-gradient(to right, #24809E 0%, #24809E ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`
+  this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`
   player.currentTime = player.duration * this.value / 100;
 });
 
 volumeBar.addEventListener('input', function() {
   const value = this.value;
-  this.style.background = `linear-gradient(to right, #24809E 0%, #24809E ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`;
+  this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`;
   changeVolume();
 });
 
@@ -56,13 +56,21 @@ player.addEventListener('dblclick', toggleFullScreen);
 // меняем стили плеера при наличии режима фулскрин
 document.addEventListener('fullscreenchange', () => {
   if (!document.fullscreenElement) {
-      videoContainer.classList.remove('video-container-fs');
-      player.classList.remove('video-fs');
-      controls.classList.remove('controls-fs');
+      videoContainer.style.width=`auto`;
+      player.style.width=``;
+      player.style.height=``;
+      player.style.maxWidth=``;
+      player.style.maxHeight=``;
+      controls.style.bottom=``;
+      fsBtn.style.backgroundImage = `url(assets/controls/fullscreen.svg)`;
   } else {
-    videoContainer.classList.add('video-container-fs');
-    player.classList.add('video-fs');
-    controls.classList.add('controls-fs');
+    videoContainer.style.width=`100%`;
+    player.style.width=`100%`;
+    player.style.height=`100%`;
+    player.style.maxWidth=`none`;
+    player.style.maxHeight=`none`;
+    controls.style.bottom=`calc(-50vh + ${player.offsetHeight / 2}px)`;
+    fsBtn.style.backgroundImage = `url(assets/controls/unfs.svg)`;
   }
   hideControls();
   }
@@ -86,9 +94,6 @@ document.addEventListener('keydown', (event) => {
   let keyName = event.code;
   if (!event.repeat) { //чтобы при зажатой клавише событие не срабатывало бесконечно
     switch (keyName) { 
-    // case 'Escape':
-    //   event.preventDefault();
-    //   break;
     case 'KeyF':
       event.preventDefault();
       toggleFullScreen();
@@ -149,8 +154,6 @@ document.addEventListener('keydown', (event) => {
   }
 })
 
-// comboKeys(nextVideo, 'ControlLeft', 'ArrowRight');
-// comboKeys(prevVideo, 'ControlLeft', 'ArrowLeft');
 
 //functions
 function videoAction() {
@@ -200,7 +203,7 @@ function updatePosition() {
   curTime.innerText = convertTime(player.currentTime || 0);
   durTime.innerText = convertTime(player.duration || 0);
   progressBar.value = (((player.currentTime || 0) / (player.duration || 1)) * 100);
-  progressBar.style.background = `linear-gradient(to right, #24809E 0%, #24809E ${progressBar.value}%, #C4C4C4 ${progressBar.value}%, #C4C4C4 100%)`;
+  progressBar.style.background = `linear-gradient(to right, #710707 0%, #710707 ${progressBar.value}%, #C4C4C4 ${progressBar.value}%, #C4C4C4 100%)`;
 }
 
 function changeVolume() {
@@ -222,19 +225,19 @@ function mute() {
     if (volLevel > 0) {
       muteBtn.style.backgroundImage = `url(assets/controls/mute.svg)`;
     }
-    volumeBar.style.background = `linear-gradient(to right, #24809E 0%, #24809E ${volumeBar.value}%, #C4C4C4 ${volumeBar.value}%, #C4C4C4 100%)`;
+    volumeBar.style.background = `linear-gradient(to right, #710707 0%, #710707 ${volumeBar.value}%, #C4C4C4 ${volumeBar.value}%, #C4C4C4 100%)`;
   } else {
     volLevel = player.volume
     player.volume = 0;
     volumeBar.value = 0;
     muteBtn.style.backgroundImage = `url(assets/controls/muteoff.svg)`;
-    volumeBar.style.background = `linear-gradient(to right, #24809E 0%, #24809E ${volumeBar.value}%, #C4C4C4 ${volumeBar.value}%, #C4C4C4 100%)`;
+    volumeBar.style.background = `linear-gradient(to right, #710707 0%, #710707 ${volumeBar.value}%, #C4C4C4 ${volumeBar.value}%, #C4C4C4 100%)`;
   }
 }
 
 function toggleFullScreen() {
   if (!document.fullscreenElement) {
-    flexWrapper.requestFullscreen();
+    videoWrapper.requestFullscreen();
   } else {
     if (document.exitFullscreen) {
       document.exitFullscreen();
@@ -306,22 +309,3 @@ function hideControls() { //функция для скрытия контрол�
   }
 }
 
-// функция для работы сочетания клавиш
-// function comboKeys(func, ...codes) {
-//   let pressed = new Set();
-
-//   document.addEventListener('keydown', function(event) {
-//     pressed.add(event.code);
-//     for (let code of codes) {
-//       if (!pressed.has(code)) {
-//         return;
-//       }
-//     }
-//     pressed.clear();
-//     func();
-//   });
-
-//   document.addEventListener('keyup', function(event) {
-//     pressed.delete(event.code);
-//   });
-// }
