@@ -261,7 +261,7 @@ function volumePlus() {
   if (player.volume < 1) {
     player.volume = (player.volume + 0.1).toFixed(1);
     volumeBar.value = player.volume * 100;
-    volumeBar.style.background = `linear-gradient(to right, #24809E 0%, #24809E ${volumeBar.value}%, #C4C4C4 ${volumeBar.value}%, #C4C4C4 100%)`;
+    volumeBar.style.background = `linear-gradient(to right, #710707 0%, #710707 ${volumeBar.value}%, #C4C4C4 ${volumeBar.value}%, #C4C4C4 100%)`;
   }
   if (player.volume > 0) {
     muteBtn.style.backgroundImage = `url(assets/controls/mute.svg)`;
@@ -272,7 +272,7 @@ function volumeMinus() {
   if (player.volume > 0) {
     player.volume = (player.volume - 0.1).toFixed(1);
     volumeBar.value = player.volume * 100;
-    volumeBar.style.background = `linear-gradient(to right, #24809E 0%, #24809E ${volumeBar.value}%, #C4C4C4 ${volumeBar.value}%, #C4C4C4 100%)`;
+    volumeBar.style.background = `linear-gradient(to right, #710707 0%, #710707 ${volumeBar.value}%, #C4C4C4 ${volumeBar.value}%, #C4C4C4 100%)`;
   }
   if (player.volume == 0) {
     volLevel = 0;
