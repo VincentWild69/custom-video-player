@@ -90,66 +90,78 @@ function videoDuration() {
 videoDuration();
 
 //hot-keys
+player.onfocus = () => videoContainer.classList.add('focused');
+player.onblur = () => videoContainer.classList.remove('focused');
+controls.onfocus = () => videoContainer.classList.add('focused');
+controls.onblur = () => videoContainer.classList.remove('focused');
+controls.childNodes.forEach(e => {
+  e.onfocus = () => videoContainer.classList.add('focused');
+  e.onblur = () => videoContainer.classList.remove('focused');
+})
+bigBtn.onfocus = () => videoContainer.classList.add('focused');
+
 document.addEventListener('keydown', (event) => {
-  let keyName = event.code;
-  if (!event.repeat) { //чтобы при зажатой клавише событие не срабатывало бесконечно
-    switch (keyName) { 
-    case 'KeyF':
-      event.preventDefault();
-      toggleFullScreen();
-      break;
-    case 'Space':
-      event.preventDefault();
-      videoAction();
-      break;
-    case 'KeyM':
-      event.preventDefault();
-      mute();
-      break;
-    case 'Period':
-      event.preventDefault();
-      speedPlus();
-      break;
-    case 'Comma':
-      event.preventDefault();
-      speedMinus();
-      break;
-    case 'ArrowLeft':
-      event.preventDefault();
-      if (event.ctrlKey) {
-        prevVideo();
-      } else {
-        if (player.currentTime - 5 > 0) {
-          player.currentTime -= 5;
+  if (videoContainer.classList.contains('focused')) {
+    let keyName = event.code;
+    if (!event.repeat) { //чтобы при зажатой клавише событие не срабатывало бесконечно
+      switch (keyName) { 
+      case 'KeyF':
+        event.preventDefault();
+        toggleFullScreen();
+        break;
+      case 'Space':
+        event.preventDefault();
+        videoAction();
+        break;
+      case 'KeyM':
+        event.preventDefault();
+        mute();
+        break;
+      case 'Period':
+        event.preventDefault();
+        speedPlus();
+        break;
+      case 'Comma':
+        event.preventDefault();
+        speedMinus();
+        break;
+      case 'ArrowLeft':
+        event.preventDefault();
+        if (event.ctrlKey) {
+          prevVideo();
         } else {
-          player.currentTime = 0;
+          if (player.currentTime - 5 > 0) {
+            player.currentTime -= 5;
+          } else {
+            player.currentTime = 0;
+          }
         }
-      }
-      break;
-    case 'ArrowRight':
-      event.preventDefault();
-      if (event.ctrlKey) {
-        nextVideo();
-      } else {
-        if (player.currentTime + 5 < player.duration) {
-          player.currentTime += 5;
+        break;
+      case 'ArrowRight':
+        event.preventDefault();
+        if (event.ctrlKey) {
+          nextVideo();
         } else {
-          player.currentTime = player.duration;
+          if (player.currentTime + 5 < player.duration) {
+            player.currentTime += 5;
+          } else {
+            player.currentTime = player.duration;
+          }
         }
+        break;
+      case 'ArrowUp':
+        event.preventDefault();
+        volumePlus();
+        break;
+      case 'ArrowDown':
+        event.preventDefault();
+        if (player.volume > 0) { //чтобы нажатие клавиши в режиме мут не сбивало запомненный уровень громкости в ноль
+          volumeMinus();
+        }
+        break;
+      default:
+        break; 
       }
-      break;
-    case 'ArrowUp':
-      event.preventDefault();
-      volumePlus();
-      break;
-    case 'ArrowDown':
-      event.preventDefault();
-      if (player.volume > 0) { //чтобы нажатие клавиши в режиме мут не сбивало запомненный уровень громкости в ноль
-        volumeMinus();
-      }
-      break;
-    default:
-      break; 
     }
   }
 })
